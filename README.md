@@ -35,3 +35,34 @@ optional arguments:
   -q, --quiet           Don't show the output graph (useful with -o)
   --accessible          Activate accessibility mode
 ```
+
+### Examples:
+Both results from one file:
+```
+./plotter.py results.csv -t "My Graph" -x Algorithm -y "Time (m/s)" -l labelFile.txt
+```
+Results from separate files:
+```
+./plotter.py results1.csv results2.csv -t "My Graph" -x Algorithm -y "Time (m/s)" -l labelFile.txt
+```
+
+The plotter will create a new entry for each new line it receives -- this includes across numerous files.
+For example, if `results.csv` looks like this:
+```
+2,3,4,5
+6,7,8,9
+```
+Then two boxes will be plotted, one for each line.
+
+If the same input is given in two files:
+results1.csv
+```
+2,3,4,5
+```
+results2.csv
+```
+6,7,8,9
+```
+This will result in the same result as before.
+
+**Note:** If labels for the x-axis are provided then they must be provided one per line, with the number of labels matching up with the number of results to be plotted (e.g. two boxes must have two labels provided, etc).
